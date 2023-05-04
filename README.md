@@ -1,6 +1,6 @@
-# WelcomeBot
+# RomeisSlackBot
 
-![Slack App Icon](https://slack.com/img/product-ui-generator/apps/slackbot.png){: .left}
+![Slack App Icon](https://slack.com/img/product-ui-generator/apps/slackbot.png)
 
 Ziel dieser Slack-App ist, den OnBoarding Prozess von neuen Mitarbeitenden zu verbessern und eine zentrale Anlaufstelle für Fragen und Informationen zu sein.
 Die Applikation umfasst daher einige hilfreiche Slack-Commands, aber auch eine Info-Seite im Profil der Anwendung in Slack mit einem Bereich für häufig gestellte Fragen.
