@@ -1,6 +1,6 @@
 # RomeisSlackBot
 
-<img alt="Slackbot Logo" src="https://slack.com/img/product-ui-generator/apps/slackbot.png" width="100" title="hover text" style="border-radius: 20%">
+<img alt="Slackbot Logo" src="https://slack.com/img/product-ui-generator/apps/slackbot.png" width="100" style="border-radius: 20%">
 
 ## Overview
 
