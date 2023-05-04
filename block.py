@@ -1,10 +1,9 @@
-def welcome(user_id):
-    return [
+welcome = [
         {
             "type": "header",
             "text": {
                 "type": "plain_text",
-                "text": f"Willkommen zum Team, <@{user_id}>! 🎉",
+                "text": "Willkommen zum Team, <@{user_id}>! 🎉",
             }
         },
         {
