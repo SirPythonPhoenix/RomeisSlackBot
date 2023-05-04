@@ -1,16 +1,18 @@
-welcome = [
+def welcome(user_id):
+    return[
         {
             "type": "header",
             "text": {
                 "type": "plain_text",
-                "text": "Willkommen zum Team, <@{user_id}>! 🎉",
+                "text": f"Willkommen zum Team, <@{user_id}>! 🎉",
             }
         },
         {
             "type": "section",
             "text": {
                 "type": "plain_text",
-                "text": "Wir freuen uns, dass Du den Weg hierher gefunden hast und hoffen, dass Du dich gut zurechtfindest."
+                "text": "Wir freuen uns, dass Du den Weg hierher gefunden hast und hoffen, "
+                        "dass Du dich gut zurechtfindest."
             }
         },
         {
@@ -20,8 +22,8 @@ welcome = [
             "type": "section",
             "text": {
                 "type": "plain_text",
-                "text": "Hier findest Du diverse weitere Links die Dir den Einstieg erleichtern sollen und eine Einleitung der wichtigsten Channels. "
-                        "Wir wünschen Dir viel Spaß!",
+                "text": "Hier findest Du diverse weitere Links die Dir den Einstieg erleichtern sollen "
+                        "und eine Einleitung der wichtigsten Channels. ",
             }
         },
         {
@@ -30,9 +32,12 @@ welcome = [
         {
             "type": "section",
             "text": {
-                "type": "mrkdwn",
-                "text": "Hier findest Du noch das WLAN Passwort für das Netzwerk romeisIE: `NtyI4nDX2uYXh0V`"
+                "type": "plain_text",
+                "text": "Nutze `/hilfe` um eine Übersicht der Bot-Befehle zu erhalten.",
             }
+        },
+        {
+            "type": "divider"
         },
         {
             "type": "header",
