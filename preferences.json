@@ -1,0 +1,8 @@
+{
+  "devMode": true,
+  "welcomeChannelId": "C056K5MTRG9",
+  "sendFeedbackSheetToChannels": ["D056055NXPY"],
+  "daysTillFeedback": "7",
+  "daysTillFeedbackReminder": "9",
+  "feedbackMessageClockHour": 11
+}
