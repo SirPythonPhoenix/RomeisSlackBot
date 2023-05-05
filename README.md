@@ -47,7 +47,7 @@ Fügt einen neuen Funfact hinzu.
 ``/remove-funfact [Index]``<br>
 Entfernt einen Funfact.
 
-``/praise [USER] [MSG(opt.)]``<br>
+``/praise [USER]``<br>
 Mit diesem Befehl kannst du jemanden Loben.
 
 ### Begrüßung
