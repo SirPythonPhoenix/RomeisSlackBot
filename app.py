@@ -50,7 +50,7 @@ def team_join(event, say, client):
 
     try:
         client.chat_scheduleMessage(
-            channel=WELCOME_CHANNEL_ID,
+            channel=user_id,
             post_at=get_timestamp(PREFS["daysTillFeedback"]),
             text=f"<@{user_id}> Du bist bereits seit einer Woche bei uns! \n"
                  "Um unseren Einstellungsprozess fortlaufend verbessern zu können, "
@@ -63,7 +63,7 @@ def team_join(event, say, client):
 
     try:
         client.chat_scheduleMessage(
-            channel=WELCOME_CHANNEL_ID,
+            channel=user_id,
             post_at=get_timestamp(PREFS["daysTillFeedbackReminder"]),
             text=f"<@{user_id}> denke bitte daran die Umfrage zur RomeisIE auszufüllen, "
                  "falls Du das noch nicht getan hast."
