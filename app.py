@@ -26,7 +26,7 @@ app = App(token=os.environ.get("SLACK_BOT_TOKEN"))
 
 # utility functions
 def get_timestamp(days: int):
-    date = datetime.datetime.now() + datetime.timedelta(days=0, seconds=20)
+    date = datetime.datetime.now() + datetime.timedelta(days=0, seconds=40)
     # date = date.replace(hour=11, minute=0, second=0, microsecond=0)
     return int(date.timestamp())
 
@@ -53,8 +53,8 @@ def team_join(event, say, client):
             text=f"<@{user_id}> Du bist bereits seit einer Woche bei uns! \n"
                  "Um unseren Einstellungsprozess fortlaufend verbessern zu können, "
                  "freuen wir uns über dein Feedback.\n"
-                 "Wir möchten dich deshalb bitten, an folgender Umfrage teilzunehmen:\n"
-                 "https://forms.office.com/r/JG15TiBMED"
+                 "Wir möchten dich deshalb bitten, an unserem Feedback-Bogen teilzunehmen.",
+            blocks=block.feedback_bogen(user_id)
         )
     except SlackApiError as e:
         print(e)
@@ -63,7 +63,7 @@ def team_join(event, say, client):
         client.chat_scheduleMessage(
             channel=WELCOME_CHANNEL_ID,
             post_at=get_timestamp(9),
-            text="<@{user_id}> denke bitte daran die Umfrage zur RomeisIE auszufüllen, "
+            text=f"<@{user_id}> denke bitte daran die Umfrage zur RomeisIE auszufüllen, "
                  "falls Du das noch nicht getan hast."
         )
     except SlackApiError as e:
@@ -124,61 +124,8 @@ def com_coffee(ack):
             "service@ws-kaffee.de")
 
 
-@app.message('open_modal')
-def mes_open_modal(say):
-    say(
-        blocks=[
-            {
-                "type": "section",
-                "text": {
-                    "type": "mrkdwn",
-                    "text": "Test Test"
-                }
-            },
-            {
-                "type": "divider"
-            },
-            {
-                "type": "section",
-                "text": {
-                    "type": "mrkdwn",
-                    "text": "This is a section block with a button."
-                },
-                "accessory": {
-                    "type": "button",
-                    "text": {
-                        "type": "plain_text",
-                        "text": "Open Modal",
-                        "emoji": True
-                    },
-                    "value": "open_modal",
-                    "action_id": "open_modal_button"
-                }
-            },
-            {
-                "type": "section",
-                "text": {
-                    "type": "mrkdwn",
-                    "text": "This is a section block with a button."
-                },
-                "accessory": {
-                    "type": "button",
-                    "text": {
-                        "type": "plain_text",
-                        "text": "DM",
-                        "emoji": True
-                    },
-                    "value": "dm",
-                    "action_id": "dm_button"
-                }
-            }
-        ],
-        text="button"
-    )
-
-
 # actions
-@app.action("open_modal_button")
+@app.action("einstellungsprozess_oeffnen")
 def open_modal_button(ack, body, client):
     ack()
     client.views_open(

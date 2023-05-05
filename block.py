@@ -1,20 +1,58 @@
 from views import umfrage_einstellungsprozess
 
 
-def welcome(user_id):
-    return[
+def feedback_bogen(user_id):
+    return [
         {
             "type": "header",
             "text": {
                 "type": "plain_text",
-                "text": f"Willkommen zum Team, <@{user_id}>! 🎉",
+                "text": "Feedback-Bogen",
+                "emoji": True
             }
         },
         {
             "type": "section",
             "text": {
+                "type": "mrkdwn",
+                "text": f"<@{user_id}> Du bist bereits seit einer Woche bei uns! \n"
+                        f"Um unseren Einstellungsprozess fortlaufend verbessern zu können, "
+                        f"freuen wir uns über dein Feedback.\n"
+                        f"Wir möchten dich deshalb bitten, an unserem Feedback-Bogen teilzunehmen."
+            }
+        },
+        {
+            "type": "actions",
+            "elements": [
+                {
+                    "type": "button",
+                    "text": {
+                        "type": "plain_text",
+                        "text": "Zum Feedback-Bogen",
+                        "emoji": True
+                    },
+                    "value": "click_me",
+                    "action_id": "einstellungsprozess_oeffnen"
+                }
+            ]
+        }
+    ]
+
+
+def welcome(user_id):
+    return [
+        {
+            "type": "header",
+            "text": {
                 "type": "plain_text",
-                "text": "Wir freuen uns, dass Du den Weg hierher gefunden hast und hoffen, "
+                "text": "Willkommen zum Team! 🎉",
+            }
+        },
+        {
+            "type": "section",
+            "text": {
+                "type": "mrkdwn",
+                "text": f"<@{user_id}> Wir freuen uns, dass Du den Weg hierher gefunden hast und hoffen, "
                         "dass Du dich gut zurechtfindest."
             }
         },
