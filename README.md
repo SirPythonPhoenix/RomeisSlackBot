@@ -39,16 +39,13 @@ Listet verschiedene Farb-Hex-Codes auf.
 Leistet Hilfestellung zur Beschaffung eines Kaffes.
 
 ``/funfact``<br>
-Gibt dir einen zufälligen Funfact an.
+Gibt einen zufälligen Funfact aus.
 
 ``/add-funfact [FUNFACT]``<br>
 Fügt einen neuen Funfact hinzu.
 
-``/remove-funfact [Index]``<br>
+``/remove-funfact [ID]``<br>
 Entfernt einen Funfact.
-
-``/praise [USER]``<br>
-Mit diesem Befehl kannst du jemanden Loben.
 
 ### Begrüßung
 

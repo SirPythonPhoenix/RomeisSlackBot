@@ -49,8 +49,13 @@ def save_data():
 
 
 # load data
-data = {}
-load_data()
+if PREFS["restoreDataBackup"]:
+    with open("data-backup.json") as data_file:
+        data = data_file.read()
+    save_data()
+else:
+    data = {}
+    load_data()
 
 
 # events
@@ -101,7 +106,13 @@ def com_hilfe(ack):
         "`/ci`\n"
         "Listet verschiedene Farb-Hex-Codes auf.\n\n"
         "`/coffee`\n"
-        "Leistet Hilfestellung zur Beschaffung eines Kaffes."
+        "Leistet Hilfestellung zur Beschaffung eines Kaffes.\n\n"
+        "`/funfact`\n"
+        "Gibt einen zufälligen Funfact aus.\n\n"
+        "`/add-funfact [FUNFACT]`\n"
+        "Fügt einen neuen Funfact hinzu.\n\n"
+        "`/remove-funfact [ID]`\n"
+        "Entfernt einen Funfact."
     )
 
 
@@ -149,6 +160,24 @@ def com_funfact(say, body, ack):
     funfact = random.choice(data['funfacts'])
     say(
         text=f"<@{user_id}> *Dein random funfact:*\n"
+             f"{funfact['text']} _(id{funfact['id']})_"
+    )
+
+
+@app.command("/add-funfact")
+def com_funfact(say, body, ack, command):
+    load_data()
+    funfact = {
+        "id": data["funfactIdCounter"],
+        "text": command["text"]
+    }
+    data["funfactIdCounter"] += 1
+    data["funfacts"].append(funfact)
+    save_data()
+    user_id = body["user_id"]
+    ack()
+    say(
+        text=f"<@{user_id}> *Folgender Funfact wurde erfolgreich hinzugefügt:*\n"
              f"{funfact['text']} _(id{funfact['id']})_"
     )
 
