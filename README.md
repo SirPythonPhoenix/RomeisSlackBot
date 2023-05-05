@@ -50,9 +50,6 @@ Entfernt einen Funfact.
 ``/praise [USER] [MSG(opt.)]``<br>
 Mit diesem Befehl kannst du jemanden Loben.
 
-``/bullshitbingo``<br>
-Generiert ein zufälliges Bullshitbingo für Developer.
-
 ### Begrüßung
 
 Wenn jemand dem Slack-Workspace beitritt, wird er/sie mit einer Willkommensnachricht begrüßt.
