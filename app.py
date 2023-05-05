@@ -185,12 +185,17 @@ def com_funfact(say, body, ack, command):
 def com_funfact(body, ack, command):
     funfact_id = command["text"]
     load_data()
-    data["funfacts"] = [funfact for funfact in data["funfacts"] if funfact["id"] != int(funfact_id)]
-    save_data()
     user_id = body["user_id"]
-    ack(
-        text=f"<@{user_id}> *Funfact #{funfact_id} wurde entfernt.*\n"
-    )
+    try:
+        data["funfacts"] = [funfact for funfact in data["funfacts"] if funfact["id"] != int(funfact_id)]
+        save_data()
+        ack(
+            text=f"<@{user_id}> *Funfact mit der ID #{funfact_id} wurde entfernt.*\n"
+        )
+    except ValueError:
+        ack(
+            text=f"<@{user_id}> Bitte gib eine valide Zahl an."
+        )
 
 
 # actions
