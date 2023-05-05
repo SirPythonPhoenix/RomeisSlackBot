@@ -11,6 +11,7 @@ from slack_sdk.errors import SlackApiError
 
 # file imports
 import block
+import views
 
 # constants
 WELCOME_CHANNEL_ID = "C056K5MTRG9"
@@ -24,8 +25,8 @@ app = App(token=os.environ.get("SLACK_BOT_TOKEN"))
 
 # utility functions
 def get_timestamp(days: int):
-    date = datetime.datetime.now() + datetime.timedelta(days=days)
-    date = date.replace(hour=11, minute=0, second=0, microsecond=0)
+    date = datetime.datetime.now() + datetime.timedelta(days=0, seconds=20)
+    # date = date.replace(hour=11, minute=0, second=0, microsecond=0)
     return int(date.timestamp())
 
 
@@ -37,7 +38,6 @@ def channel_join():
 # events
 @app.event("team_join")
 def team_join(event, say, client):
-    print("Team_join event fired.")
     user_id = event["user"]["id"]
     say(
         blocks=block.welcome(user_id=user_id),
@@ -121,6 +121,56 @@ def com_coffee(ack):
         ack("`418` I'm a teapot\n"
             "The server refuses to brew coffee because it is, permanently, a teapot.\n"
             "service@ws-kaffee.de")
+
+
+@app.message('open_modal')
+def mes_open_modal(say):
+    say(
+        blocks=[
+            {
+                "type": "section",
+                "text": {
+                    "type": "mrkdwn",
+                    "text": "Test Test"
+                }
+            },
+            {
+                "type": "divider"
+            },
+            {
+                "type": "section",
+                "text": {
+                    "type": "mrkdwn",
+                    "text": "This is a section block with a button."
+                },
+                "accessory": {
+                    "type": "button",
+                    "text": {
+                        "type": "plain_text",
+                        "text": "Click Me",
+                        "emoji": True
+                    },
+                    "value": "click_me_123",
+                    "action_id": "open_modal_button"
+                }
+            }
+        ],
+        text="button"
+    )
+
+
+# modals
+@app.action("open_modal_button")
+def open_modal(ack, body, client):
+    # Acknowledge the command request
+    ack()
+    # Call views_open with the built-in client
+    client.views_open(
+        # Pass a valid trigger_id within 3 seconds of receiving it
+        trigger_id=body["trigger_id"],
+        # View payload
+        view=views.umfrage_einstellungsprozess()
+    )
 
 
 # start app
