@@ -15,7 +15,7 @@ import block
 import views
 
 # constants
-PREFS = json.load(open("preferences.json"))
+PREFS = json.load(open("preferences.json", encoding="utf-8"))
 DEV_MODE = PREFS["devMode"]
 WELCOME_CHANNEL_ID = PREFS["welcomeChannelId"]
 SEND_FEEDBACK_TO = PREFS["sendFeedbackSheetToChannels"]
@@ -36,6 +36,21 @@ def get_timestamp(days: int):
         date = datetime.datetime.now() + datetime.timedelta(days=days)
         date = date.replace(hour=PREFS["feedbackMessageClockHour"], minute=0, second=0, microsecond=0)
         return int(date.timestamp())
+
+
+def load_data():
+    global data
+    data = json.load(open("data.json", "r", encoding="utf-8"))
+
+
+def save_data():
+    global data
+    json.dump(data, open("data.json", "w", encoding="utf-8"))
+
+
+# load data
+data = {}
+load_data()
 
 
 # events
@@ -124,6 +139,18 @@ def com_coffee(ack):
         ack("`418` I'm a teapot\n"
             "The server refuses to brew coffee because it is, permanently, a teapot.\n"
             "service@ws-kaffee.de")
+
+
+@app.command("/funfact")
+def com_funfact(say, body, ack):
+    user_id = body["user_id"]
+    ack()
+    load_data()
+    funfact = random.choice(data['funfacts'])
+    say(
+        text=f"<@{user_id}> *Dein random funfact:*\n"
+             f"{funfact['text']} _(id{funfact['id']})_"
+    )
 
 
 # actions
