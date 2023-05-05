@@ -45,6 +45,7 @@ agreement_inputs = [
 def umfrage_einstellungsprozess():
     return {
         "type": "modal",
+        "callback_id": "einstellungsprozess_submit",
         "title": {
             "type": "plain_text",
             "text": "Einstellungsprozess",
@@ -74,6 +75,7 @@ def umfrage_einstellungsprozess():
             },
             {
                 "type": "input",
+                "block_id": "input_1",
                 "element": {
                     "type": "plain_text_input",
                     "action_id": "plain_text_input-action"
@@ -86,6 +88,7 @@ def umfrage_einstellungsprozess():
             },
             {
                 "type": "input",
+                "block_id": "input_2",
                 "element": {
                     "type": "static_select",
                     "placeholder": {
@@ -104,6 +107,7 @@ def umfrage_einstellungsprozess():
             },
             {
                 "type": "input",
+                "block_id": "input_3",
                 "element": {
                     "type": "static_select",
                     "placeholder": {
@@ -123,6 +127,7 @@ def umfrage_einstellungsprozess():
             },
             {
                 "type": "input",
+                "block_id": "input_4",
                 "element": {
                     "type": "plain_text_input",
                     "multiline": True,
@@ -136,6 +141,7 @@ def umfrage_einstellungsprozess():
             },
             {
                 "type": "input",
+                "block_id": "input_5",
                 "element": {
                     "type": "static_select",
                     "placeholder": {
@@ -156,6 +162,7 @@ def umfrage_einstellungsprozess():
             },
             {
                 "type": "input",
+                "block_id": "input_6",
                 "element": {
                     "type": "static_select",
                     "placeholder": {
@@ -175,6 +182,7 @@ def umfrage_einstellungsprozess():
             },
             {
                 "type": "input",
+                "block_id": "input_7",
                 "element": {
                     "type": "radio_buttons",
                     "options": [
@@ -222,6 +230,7 @@ def umfrage_einstellungsprozess():
             },
             {
                 "type": "input",
+                "block_id": "input_8",
                 "element": {
                     "type": "static_select",
                     "placeholder": {
@@ -234,13 +243,14 @@ def umfrage_einstellungsprozess():
                 },
                 "label": {
                     "type": "plain_text",
-                    "text": "9. Die Informationen, die ich während des Onboardings erhielt, "
+                    "text": "8. Die Informationen, die ich während des Onboardings erhielt, "
                             "waren auf dem richtigen Niveau für mich.",
                     "emoji": True
                 }
             },
             {
                 "type": "input",
+                "block_id": "input_9",
                 "element": {
                     "type": "static_select",
                     "placeholder": {
@@ -253,13 +263,14 @@ def umfrage_einstellungsprozess():
                 },
                 "label": {
                     "type": "plain_text",
-                    "text": "10. Ich habe jetzt ein klares Verständnis davon, "
+                    "text": "9. Ich habe jetzt ein klares Verständnis davon, "
                             "was von mir in diesre Rolle erwartet wird.",
                     "emoji": True
                 }
             },
             {
                 "type": "input",
+                "block_id": "input_10",
                 "element": {
                     "type": "static_select",
                     "placeholder": {
@@ -272,12 +283,13 @@ def umfrage_einstellungsprozess():
                 },
                 "label": {
                     "type": "plain_text",
-                    "text": "11. Ich fühle mich hier willkommen.",
+                    "text": "10. Ich fühle mich hier willkommen.",
                     "emoji": True
                 }
             },
             {
                 "type": "input",
+                "block_id": "input_11",
                 "element": {
                     "type": "static_select",
                     "placeholder": {
@@ -290,12 +302,13 @@ def umfrage_einstellungsprozess():
                 },
                 "label": {
                     "type": "plain_text",
-                    "text": "12. Die Arbeit hier ist, wie ich es mir erhofft hatte.",
+                    "text": "11. Die Arbeit hier ist, wie ich es mir erhofft hatte.",
                     "emoji": True
                 }
             },
             {
                 "type": "input",
+                "block_id": "input_12",
                 "element": {
                     "type": "static_select",
                     "placeholder": {
@@ -308,12 +321,13 @@ def umfrage_einstellungsprozess():
                 },
                 "label": {
                     "type": "plain_text",
-                    "text": "13. Ich habe das Gefühl, ich passe in dieses Team / Unternehmen.",
+                    "text": "12. Ich habe das Gefühl, ich passe in dieses Team / Unternehmen.",
                     "emoji": True
                 }
             },
             {
                 "type": "input",
+                "block_id": "input_13",
                 "element": {
                     "type": "static_select",
                     "placeholder": {
@@ -326,11 +340,13 @@ def umfrage_einstellungsprozess():
                 },
                 "label": {
                     "type": "plain_text",
-                    "text": "14. Ich kann mir vorstellen, dass ich in einem Jahr imer noch hier arbeite.",
+                    "text": "13. Ich kann mir vorstellen, dass ich in einem Jahr imer noch hier arbeite.",
                     "emoji": True
                 }
-            },{
+            },
+            {
                 "type": "input",
+                "block_id": "input_14",
                 "element": {
                     "type": "plain_text_input",
                     "multiline": True,
@@ -338,7 +354,7 @@ def umfrage_einstellungsprozess():
                 },
                 "label": {
                     "type": "plain_text",
-                    "text": "16. Was können wir tun, um die Onboarding-Experience für neue Mitarbeiter zu verbessern?",
+                    "text": "14. Was können wir tun, um die Onboarding-Experience für neue Mitarbeiter zu verbessern?",
                     "emoji": True
                 }
             }

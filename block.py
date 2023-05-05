@@ -1,3 +1,6 @@
+from views import umfrage_einstellungsprozess
+
+
 def welcome(user_id):
     return[
         {
@@ -213,4 +216,130 @@ def welcome(user_id):
         {
             "type": "divider"
         }
+    ]
+
+
+def feedback_results(user_name, values):
+    return [
+        {
+            "type": "header",
+            "text": {
+                "type": "plain_text",
+                "text": f"Ergebnisse des Feedbackbogens von {user_name}",
+                "emoji": True
+            }
+        },
+        {
+            "type": "section",
+            "text": {
+                "type": "mrkdwn",
+                "text": f"*{umfrage_einstellungsprozess()['blocks'][2]['label']['text']}* \n"
+                        f"_{values['input_1']['plain_text_input-action']['value']}_"
+            }
+        },
+        {
+            "type": "section",
+            "text": {
+                "type": "mrkdwn",
+                "text": f"*{umfrage_einstellungsprozess()['blocks'][3]['label']['text']}* \n"
+                        f"_{values['input_2']['static_select-action']['selected_option']['text']['text']}_"
+            }
+        },
+        {
+            "type": "section",
+            "text": {
+                "type": "mrkdwn",
+                "text": f"*{umfrage_einstellungsprozess()['blocks'][4]['label']['text']}* \n"
+                        f"_{values['input_3']['static_select-action']['selected_option']['text']['text']}_"
+            }
+        },
+        {
+            "type": "section",
+            "text": {
+                "type": "mrkdwn",
+                "text": f"*{umfrage_einstellungsprozess()['blocks'][5]['label']['text']}* \n"
+                        f"_{values['input_4']['plain_text_input-action']['value']}_"
+            }
+        },
+        {
+            "type": "section",
+            "text": {
+                "type": "mrkdwn",
+                "text": f"*{umfrage_einstellungsprozess()['blocks'][6]['label']['text']}* \n"
+                        f"_{values['input_5']['static_select-action']['selected_option']['text']['text']}_"
+            }
+        },
+        {
+            "type": "section",
+            "text": {
+                "type": "mrkdwn",
+                "text": f"*{umfrage_einstellungsprozess()['blocks'][7]['label']['text']}* \n"
+                        f"_{values['input_6']['static_select-action']['selected_option']['text']['text']}_"
+            }
+        },
+        {
+            "type": "section",
+            "text": {
+                "type": "mrkdwn",
+                "text": f"*{umfrage_einstellungsprozess()['blocks'][8]['label']['text']}* \n"
+                        f"_{values['input_7']['radio_buttons-action']['selected_option']['text']['text']}_"
+            }
+        },
+        {
+            "type": "section",
+            "text": {
+                "type": "mrkdwn",
+                "text": f"*{umfrage_einstellungsprozess()['blocks'][9]['label']['text']}* \n"
+                        f"_{values['input_8']['static_select-action']['selected_option']['text']['text']}_"
+            }
+        },
+        {
+            "type": "section",
+            "text": {
+                "type": "mrkdwn",
+                "text": f"*{umfrage_einstellungsprozess()['blocks'][10]['label']['text']}* \n"
+                        f"_{values['input_9']['static_select-action']['selected_option']['text']['text']}_"
+            }
+        },
+        {
+            "type": "section",
+            "text": {
+                "type": "mrkdwn",
+                "text": f"*{umfrage_einstellungsprozess()['blocks'][11]['label']['text']}* \n"
+                        f"_{values['input_10']['static_select-action']['selected_option']['text']['text']}_"
+            }
+        },
+        {
+            "type": "section",
+            "text": {
+                "type": "mrkdwn",
+                "text": f"*{umfrage_einstellungsprozess()['blocks'][12]['label']['text']}* \n"
+                        f"_{values['input_11']['static_select-action']['selected_option']['text']['text']}_"
+            }
+        },
+        {
+            "type": "section",
+            "text": {
+                "type": "mrkdwn",
+                "text": f"*{umfrage_einstellungsprozess()['blocks'][13]['label']['text']}* \n"
+                        f"_{values['input_12']['static_select-action']['selected_option']['text']['text']}_"
+            }
+        },
+        {
+            "type": "section",
+            "text": {
+                "type": "mrkdwn",
+                "text": f"*{umfrage_einstellungsprozess()['blocks'][14]['label']['text']}* \n"
+                        f"_{values['input_13']['static_select-action']['selected_option']['text']['text']}_"
+            }
+        },
+        {
+            "type": "section",
+            "text": {
+                "type": "mrkdwn",
+                "text": f"*{umfrage_einstellungsprozess()['blocks'][15]['label']['text']}* \n"
+                        f"_{values['input_14']['plain_text_input-action']['value']}_"
+            }
+        },
+
     ]

@@ -15,6 +15,7 @@ import views
 
 # constants
 WELCOME_CHANNEL_ID = "C056K5MTRG9"
+SEND_FEEDBACK_TO = ["D056055NXPY"]
 
 # load environment variables from .env file
 load_dotenv()
@@ -147,11 +148,28 @@ def mes_open_modal(say):
                     "type": "button",
                     "text": {
                         "type": "plain_text",
-                        "text": "Click Me",
+                        "text": "Open Modal",
                         "emoji": True
                     },
-                    "value": "click_me_123",
+                    "value": "open_modal",
                     "action_id": "open_modal_button"
+                }
+            },
+            {
+                "type": "section",
+                "text": {
+                    "type": "mrkdwn",
+                    "text": "This is a section block with a button."
+                },
+                "accessory": {
+                    "type": "button",
+                    "text": {
+                        "type": "plain_text",
+                        "text": "DM",
+                        "emoji": True
+                    },
+                    "value": "dm",
+                    "action_id": "dm_button"
                 }
             }
         ],
@@ -159,18 +177,31 @@ def mes_open_modal(say):
     )
 
 
-# modals
+# actions
 @app.action("open_modal_button")
-def open_modal(ack, body, client):
-    # Acknowledge the command request
+def open_modal_button(ack, body, client):
     ack()
-    # Call views_open with the built-in client
     client.views_open(
-        # Pass a valid trigger_id within 3 seconds of receiving it
         trigger_id=body["trigger_id"],
-        # View payload
         view=views.umfrage_einstellungsprozess()
     )
+
+
+# view submits
+@app.view("einstellungsprozess_submit")
+def dm_button(ack, client, body, view):
+    values = view["state"]["values"]
+    user_id = body["user"]["id"]
+    user_name = body["user"]["name"]
+    ack()
+    blocks = block.feedback_results(user_name, values)
+    for channel in SEND_FEEDBACK_TO:
+        client.chat_postMessage(
+            channel=channel,
+            text=f"*Ergebnisse des Feedbackbogens von {user_name}:*",
+            blocks=blocks
+        )
+    client.chat_postMessage(channel=user_id, text="Der Umfragebogen wurde erfolgreich ausgefüllt und abgeschickt!")
 
 
 # start app
