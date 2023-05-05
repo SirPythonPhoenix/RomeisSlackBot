@@ -2,6 +2,7 @@
 import os
 import random
 import datetime
+import json
 
 # external module imports
 from dotenv import load_dotenv
@@ -14,8 +15,10 @@ import block
 import views
 
 # constants
-WELCOME_CHANNEL_ID = "C056K5MTRG9"
-SEND_FEEDBACK_TO = ["D056055NXPY"]
+PREFS = json.load(open("preferences.json"))
+DEV_MODE = PREFS["devMode"]
+WELCOME_CHANNEL_ID = PREFS["welcomeChannelId"]
+SEND_FEEDBACK_TO = PREFS["sendFeedbackSheetToChannels"]
 
 # load environment variables from .env file
 load_dotenv()
@@ -26,14 +29,13 @@ app = App(token=os.environ.get("SLACK_BOT_TOKEN"))
 
 # utility functions
 def get_timestamp(days: int):
-    date = datetime.datetime.now() + datetime.timedelta(days=0, seconds=40)
-    # date = date.replace(hour=11, minute=0, second=0, microsecond=0)
-    return int(date.timestamp())
-
-
-@app.event("channel_join")
-def channel_join():
-    pass
+    if DEV_MODE:
+        date = datetime.datetime.now() + datetime.timedelta(seconds=20)
+        return int(date.timestamp())
+    else:
+        date = datetime.datetime.now() + datetime.timedelta(days=days)
+        date = date.replace(hour=PREFS["feedbackMessageClockHour"], minute=0, second=0, microsecond=0)
+        return int(date.timestamp())
 
 
 # events
@@ -49,7 +51,7 @@ def team_join(event, say, client):
     try:
         client.chat_scheduleMessage(
             channel=WELCOME_CHANNEL_ID,
-            post_at=get_timestamp(7),
+            post_at=get_timestamp(PREFS["daysTillFeedback"]),
             text=f"<@{user_id}> Du bist bereits seit einer Woche bei uns! \n"
                  "Um unseren Einstellungsprozess fortlaufend verbessern zu können, "
                  "freuen wir uns über dein Feedback.\n"
@@ -62,7 +64,7 @@ def team_join(event, say, client):
     try:
         client.chat_scheduleMessage(
             channel=WELCOME_CHANNEL_ID,
-            post_at=get_timestamp(9),
+            post_at=get_timestamp(PREFS["daysTillFeedbackReminder"]),
             text=f"<@{user_id}> denke bitte daran die Umfrage zur RomeisIE auszufüllen, "
                  "falls Du das noch nicht getan hast."
         )
