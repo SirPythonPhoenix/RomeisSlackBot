@@ -50,8 +50,7 @@ def save_data():
 
 # load data
 if PREFS["restoreDataBackup"]:
-    with open("data-backup.json") as data_file:
-        data = data_file.read()
+    data = json.load(open("data-backup.json"))
     save_data()
 else:
     data = {}
@@ -179,6 +178,18 @@ def com_funfact(say, body, ack, command):
     say(
         text=f"<@{user_id}> *Folgender Funfact wurde erfolgreich hinzugefügt:*\n"
              f"{funfact['text']} _(id{funfact['id']})_"
+    )
+
+
+@app.command("/remove-funfact")
+def com_funfact(body, ack, command):
+    funfact_id = command["text"]
+    load_data()
+    data["funfacts"] = [funfact for funfact in data["funfacts"] if funfact["id"] != int(funfact_id)]
+    save_data()
+    user_id = body["user_id"]
+    ack(
+        text=f"<@{user_id}> *Funfact #{funfact_id} wurde entfernt.*\n"
     )
 
 
