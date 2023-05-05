@@ -38,6 +38,21 @@ Listet verschiedene Farb-Hex-Codes auf.
 ``/coffee``<br>
 Leistet Hilfestellung zur Beschaffung eines Kaffes.
 
+``/funfact``<br>
+Gibt dir einen zufälligen Funfact an.
+
+``/add-funfact [FUNFACT]``<br>
+Fügt einen neuen Funfact hinzu.
+
+``/remove-funfact [Index]``<br>
+Entfernt einen Funfact.
+
+``/praise [USER] [MSG(opt.)]``<br>
+Mit diesem Befehl kannst du jemanden Loben.
+
+``/bullshitbingo``<br>
+Generiert ein zufälliges Bullshitbingo für Developer.
+
 ### Begrüßung
 
 Wenn jemand dem Slack-Workspace beitritt, wird er/sie mit einer Willkommensnachricht begrüßt.
