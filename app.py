@@ -112,7 +112,7 @@ def com_hilfe(ack):
         "Fügt einen neuen Funfact hinzu.\n\n"
         "`/remove-funfact [ID]`\n"
         "Entfernt einen Funfact.\n\n"
-        "``/hausmeister``\n"
+        "`/hausmeister`\n"
         "Öffnet das Hausmeister-Menü\n\n"
     )
 
