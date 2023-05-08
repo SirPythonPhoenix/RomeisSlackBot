@@ -27,8 +27,20 @@ def request(goods, comment):
 
     message.attach(
         MIMEText(f"""\
-    Angeforderte Güter: {", ".join(goods)}
-    Kommentar: {comment}
+Sehr geehrter Hausmeister,
+
+könnten sie zur RomeisIE im Triangulum bitte {", ".join(goods)} bringen?
+
+{comment}
+
+Vielen Dank im Voraus für Ihre Unterstützung.
+
+Mit freundlichen Grüßen,
+RomeisIE Information Engineering
+
+---------
+
+Dies ist eine automatisch generierte Mail.
         """, "plain")
     )
 

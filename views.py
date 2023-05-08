@@ -46,7 +46,7 @@ agreement_inputs = [
 
 
 def hausmeister(last_request):
-    diff = datetime.datetime.now() - last_request
+    diff = datetime.datetime.now() - last_request if last_request else ""
     return {
         "title": {
             "type": "plain_text",
