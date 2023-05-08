@@ -252,7 +252,8 @@ def dm_button(ack, client, body, view):
     load_data()
     data["lastHausmeisterRequest"] = datetime.datetime.now().timestamp()
     save_data()
-    client.chat_postMessage(channel=user_id, text=f"Folgende Bestellung wurde soeben an den Hausmeister gesendet: {', '.join(goods)}")
+    client.chat_postMessage(channel=user_id, text=f"Folgende Bestellung wurde soeben an den Hausmeister gesendet: {', '.join(goods)}\n"
+                                                  f"Kommentar: {comment if comment else '/'}")
 
 
 # home
