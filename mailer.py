@@ -44,6 +44,24 @@ Dies ist eine automatisch generierte Mail.
         """, "plain")
     )
 
+    message.attach(
+        MIMEText(f"""\
+<html>
+  <body>
+    <p>Sehr geehrter Hausmeister,<br><br>
+       könnten sie zur RomeisIE im Triangulum bitte {", ".join(goods)} bringen?<br><br>
+       {comment}<br><br>
+       Vielen Dank im Voraus für Ihre Unterstützung.<br><br>
+       Mit freundlichen Grüßen,<br>
+       RomeisIE Information Engineering<br><br>
+       <hr><br><br>
+       <i>Dies ist eine automatisch generierte Mail.</i>
+    </p>
+  </body>
+</html>
+        """, "html")
+    )
+
     context = ssl.create_default_context()
     with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
         server.login(sender_email, password)

@@ -1,7 +1,7 @@
 {
   "devMode": true,
   "restoreDataBackup": true,
-  "hausmeisterMail": "bover57663@in2reach.com",
+  "hausmeisterMail": "bereyi1747@in2reach.com",
   "smtpMail": {
     "port": 465,
     "smtpServer": "mail.gmx.com"
