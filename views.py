@@ -42,6 +42,116 @@ agreement_inputs = [
 ]
 
 
+def hausmeister():
+    return {
+        "title": {
+            "type": "plain_text",
+            "text": "Hausmeister-Menü",
+            "emoji": True
+        },
+        "submit": {
+            "type": "plain_text",
+            "text": "Anfordern",
+            "emoji": True
+        },
+        "type": "modal",
+        "close": {
+            "type": "plain_text",
+            "text": "Abbrechen",
+            "emoji": True
+        },
+        "blocks": [
+            {
+                "type": "divider"
+            },
+            {
+                "type": "input",
+                "element": {
+                    "type": "checkboxes",
+                    "options": [
+                        {
+                            "text": {
+                                "type": "mrkdwn",
+                                "text": ":coffee: Kaffee"
+                            },
+                            "value": "value-0"
+                        },
+                        {
+                            "text": {
+                                "type": "mrkdwn",
+                                "text": ":soap: Seife"
+                            },
+                            "value": "value-0"
+                        },
+                        {
+                            "text": {
+                                "type": "mrkdwn",
+                                "text": ":roll_of_paper: Klopapier"
+                            },
+                            "value": "value-0"
+                        },
+                        {
+                            "text": {
+                                "type": "mrkdwn",
+                                "text": ":basket: Handtücher"
+                            },
+                            "value": "value-0"
+                        },
+                        {
+                            "text": {
+                                "type": "mrkdwn",
+                                "text": ":lotion_bottle: Desinfektionsmittel"
+                            },
+                            "value": "value-0"
+                        }
+                    ],
+                    "action_id": "checkboxes-action"
+                },
+                "label": {
+                    "type": "plain_text",
+                    "text": "Güter",
+                    "emoji": True
+                }
+            },
+            {
+                "type": "input",
+                "label": {
+                    "type": "plain_text",
+                    "text": "Kommentar",
+                    "emoji": True
+                },
+                "element": {
+                    "type": "plain_text_input",
+                    "multiline": True
+                },
+                "optional": True
+            },
+            {
+                "type": "input",
+                "element": {
+                    "type": "checkboxes",
+                    "options": [
+                        {
+                            "text": {
+                                "type": "plain_text",
+                                "text": "Mir ist bewusst, dass durch das Drücken auf `Anfordern` unwiederruflich eine Mail an den Hausmeister gesendet wird.",
+                                "emoji": True
+                            },
+                            "value": "value-0"
+                        }
+                    ],
+                    "action_id": "checkboxes-action"
+                },
+                "label": {
+                    "type": "plain_text",
+                    "text": "Einwilligung",
+                    "emoji": True
+                }
+            }
+        ]
+    }
+
+
 def umfrage_einstellungsprozess():
     return {
         "type": "modal",
