@@ -31,6 +31,9 @@ def home():
                             "`/wlan-koeln`\nGibt das W-Lan Passwort in Köln an.\n\n"
                             "`/ci`\nListet verschiedene Farb-Hex-Codes auf.\n\n"
                             "`/coffee`\nLeistet Hilfestellung zur Beschaffung eines Kaffes."
+                            "`funfact`\nGibt einen zufälligen Funfact aus."
+                            "`add-funfact [FUNFACT]`\nFügt einen neuen Funfact hinzu."
+                            "`remove-funfact [ID]`\nEntfernt einen Funfact."
                 }
             }
         ]
