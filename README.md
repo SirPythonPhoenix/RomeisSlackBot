@@ -47,6 +47,9 @@ Fügt einen neuen Funfact hinzu.
 ``/remove-funfact [ID]``<br>
 Entfernt einen Funfact.
 
+``/hausmeister``
+Öffnet das Hausmeister-Menü
+
 ### Begrüßung
 
 Wenn jemand dem Slack-Workspace beitritt, wird er/sie mit einer Willkommensnachricht begrüßt.

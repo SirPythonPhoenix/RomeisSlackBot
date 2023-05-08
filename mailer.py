@@ -21,7 +21,7 @@ password = os.environ["PYTHON_MAIL_PASSWORD"]
 
 def request(goods, comment):
     message = MIMEMultipart("alternative")
-    message["Subject"] = "multipart test"
+    message["Subject"] = "Anfrage"
     message["From"] = f'noreply <{sender_email}>'
     message["To"] = receiver_email
 
