@@ -151,8 +151,7 @@ def hausmeister(last_request):
                         {
                             "text": {
                                 "type": "mrkdwn",
-                                "text": "Mir ist bewusst, dass durch das Drücken auf `Anfordern` unwiederruflich eine Mail an den Hausmeister gesendet wird.",
-                                "emoji": True
+                                "text": "Mir ist bewusst, dass durch das Drücken auf `Anfordern` unwiederruflich eine Mail an den Hausmeister gesendet wird."
                             },
                             "value": "value-0"
                         }
