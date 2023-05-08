@@ -1,6 +1,11 @@
 {
   "devMode": true,
   "restoreDataBackup": true,
+  "hausmeisterMail": "",
+  "smtpMail": {
+    "port": 465,
+    "smtpServer": "mail.gmx.com"
+  },
   "welcomeChannelId": "C056K5MTRG9",
   "sendFeedbackSheetToChannels": ["D056055NXPY"],
   "daysTillFeedback": "7",

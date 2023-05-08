@@ -55,6 +55,7 @@ def hausmeister():
             "emoji": True
         },
         "type": "modal",
+        "callback_id": "hausmeister_submit",
         "close": {
             "type": "plain_text",
             "text": "Abbrechen",
@@ -124,7 +125,8 @@ def hausmeister():
                 },
                 "element": {
                     "type": "plain_text_input",
-                    "multiline": True
+                    "multiline": True,
+                    "action_id": "plain_text_input-action"
                 },
                 "optional": True
             },

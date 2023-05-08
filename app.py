@@ -14,6 +14,7 @@ from slack_sdk.errors import SlackApiError
 import block
 import views
 import home
+import mailer
 
 # constants
 PREFS = json.load(open("preferences.json", encoding="utf-8"))
@@ -233,6 +234,18 @@ def dm_button(ack, client, body, view):
             blocks=blocks
         )
     client.chat_postMessage(channel=user_id, text="Der Umfragebogen wurde erfolgreich ausgefüllt und abgeschickt!")
+
+
+@app.view("hausmeister_submit")
+def dm_button(ack, client, body, view):
+    values = view["state"]["values"]
+    goods = [":".join(good['text']['text'].split(':')[2:])[1:] for good in values['goods']['checkboxes-action']['selected_options']]
+    comment = values['comment']['plain_text_input-action']['value']
+    comment = comment if comment else ""
+    user_id = body["user"]["id"]
+    ack()
+    mailer.request(goods, comment)
+    client.chat_postMessage(channel=user_id, text=f"Folgende Bestellung wurde soeben an den Hausmeister gesendet: {', '.join(goods)}")
 
 
 # home
