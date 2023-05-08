@@ -6,6 +6,10 @@ from email.mime.multipart import MIMEMultipart
 import json
 import os
 
+# external module imports
+from dotenv import load_dotenv
+
+load_dotenv()
 PREFS = json.load(open("preferences.json", encoding="utf-8"))
 
 port = PREFS["smtpMail"]["port"]
@@ -18,7 +22,7 @@ password = os.environ["PYTHON_MAIL_PASSWORD"]
 def request(goods, comment):
     message = MIMEMultipart("alternative")
     message["Subject"] = "multipart test"
-    message["From"] = sender_email
+    message["From"] = f'noreply <{sender_email}>'
     message["To"] = receiver_email
 
     message.attach(

@@ -1,7 +1,7 @@
 {
   "devMode": true,
   "restoreDataBackup": true,
-  "hausmeisterMail": "",
+  "hausmeisterMail": "jovofi5223@meidecn.com",
   "smtpMail": {
     "port": 465,
     "smtpServer": "mail.gmx.com"
