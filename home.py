@@ -34,6 +34,7 @@ def home():
                             "`funfact`\nGibt einen zufälligen Funfact aus.\n\n"
                             "`add-funfact [FUNFACT]`\nFügt einen neuen Funfact hinzu.\n\n"
                             "`remove-funfact [ID]`\nEntfernt einen Funfact.\n\n"
+                            "`hausmeister`\nÖffnet das Hausmeister-Menü.\n\n"
                 }
             }
         ]
