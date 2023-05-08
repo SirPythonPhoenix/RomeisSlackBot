@@ -106,14 +106,14 @@ def com_hilfe(ack):
         "Gibt das W-Lan Passwort in Köln an.\n\n"
         "`/ci`\n"
         "Listet verschiedene Farb-Hex-Codes auf.\n\n"
-        "`/coffee`\n"
-        "Leistet Hilfestellung zur Beschaffung eines Kaffes.\n\n"
         "`/funfact`\n"
         "Gibt einen zufälligen Funfact aus.\n\n"
         "`/add-funfact [FUNFACT]`\n"
         "Fügt einen neuen Funfact hinzu.\n\n"
         "`/remove-funfact [ID]`\n"
-        "Entfernt einen Funfact."
+        "Entfernt einen Funfact.\n\n"
+        "``/hausmeister``\n"
+        "Öffnet das Hausmeister-Menü\n\n"
     )
 
 
@@ -141,16 +141,6 @@ def com_ci(ack):
         f"White `#FFFFFF` \n"
         f"Dark Grey `#707070` \n"
         f"Light Black `#191919`")
-
-
-@app.command("/coffee")
-def com_coffee(ack):
-    if random.randint(0, 2):
-        ack(f"service@ws-kaffee.de")
-    else:
-        ack("`418` I'm a teapot\n"
-            "The server refuses to brew coffee because it is, permanently, a teapot.\n"
-            "service@ws-kaffee.de")
 
 
 @app.command("/funfact")

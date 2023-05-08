@@ -30,7 +30,6 @@ def home():
                             "`/wlan`\nGibt das W-Lan Passwort in Gelnhausen an.\n\n"
                             "`/wlan-koeln`\nGibt das W-Lan Passwort in Köln an.\n\n"
                             "`/ci`\nListet verschiedene Farb-Hex-Codes auf.\n\n"
-                            "`/coffee`\nLeistet Hilfestellung zur Beschaffung eines Kaffes.\n\n"
                             "`funfact`\nGibt einen zufälligen Funfact aus.\n\n"
                             "`add-funfact [FUNFACT]`\nFügt einen neuen Funfact hinzu.\n\n"
                             "`remove-funfact [ID]`\nEntfernt einen Funfact.\n\n"
