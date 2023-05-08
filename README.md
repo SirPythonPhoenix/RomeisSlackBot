@@ -47,7 +47,7 @@ Fügt einen neuen Funfact hinzu.
 ``/remove-funfact [ID]``<br>
 Entfernt einen Funfact.
 
-``/hausmeister``
+``/hausmeister``<br>
 Öffnet das Hausmeister-Menü
 
 ### Begrüßung
