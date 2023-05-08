@@ -1,4 +1,7 @@
-#IDE Cache
+# Tests
+test_*
+
+# IDE Cache
 .idea/
 
 # Byte-compiled / optimized / DLL files
