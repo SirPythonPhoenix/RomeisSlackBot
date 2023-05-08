@@ -66,6 +66,7 @@ def hausmeister():
             },
             {
                 "type": "input",
+                "block_id": "goods",
                 "element": {
                     "type": "checkboxes",
                     "options": [
@@ -81,28 +82,28 @@ def hausmeister():
                                 "type": "mrkdwn",
                                 "text": ":soap: Seife"
                             },
-                            "value": "value-0"
+                            "value": "value-1"
                         },
                         {
                             "text": {
                                 "type": "mrkdwn",
                                 "text": ":roll_of_paper: Klopapier"
                             },
-                            "value": "value-0"
+                            "value": "value-2"
                         },
                         {
                             "text": {
                                 "type": "mrkdwn",
                                 "text": ":basket: Handtücher"
                             },
-                            "value": "value-0"
+                            "value": "value-3"
                         },
                         {
                             "text": {
                                 "type": "mrkdwn",
                                 "text": ":lotion_bottle: Desinfektionsmittel"
                             },
-                            "value": "value-0"
+                            "value": "value-4"
                         }
                     ],
                     "action_id": "checkboxes-action"
@@ -115,6 +116,7 @@ def hausmeister():
             },
             {
                 "type": "input",
+                "block_id": "comment",
                 "label": {
                     "type": "plain_text",
                     "text": "Kommentar",
