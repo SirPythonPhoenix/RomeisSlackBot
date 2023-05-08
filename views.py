@@ -1,3 +1,6 @@
+# base module import
+import datetime
+
 agreement_inputs = [
     {
         "text": {
@@ -42,7 +45,8 @@ agreement_inputs = [
 ]
 
 
-def hausmeister():
+def hausmeister(last_request):
+    diff = datetime.datetime.now() - last_request
     return {
         "title": {
             "type": "plain_text",
@@ -64,6 +68,15 @@ def hausmeister():
         "blocks": [
             {
                 "type": "divider"
+            },
+            {
+                "type": "section",
+                "text": {
+                    "type": "mrkdwn",
+                    "text": f"Die letzte Hausmeister-Anfrage wurde vor vor {diff.days} Tagen "
+                            f"(am {last_request.day}.{last_request.month}.{last_request.year} um {last_request.hour}:{last_request.minute} Uhr) "
+                            f"gesendet." if last_request else "Es wurde noch keine Anfrage an den Hausmeister getätigt."
+                }
             },
             {
                 "type": "input",

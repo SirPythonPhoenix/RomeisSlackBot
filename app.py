@@ -203,9 +203,13 @@ def com_funfact(body, ack, command):
 @app.command("/hausmeister")
 def com_hausmeister(body, ack, client):
     ack()
+    load_data()
+    last_request = data["lastHausmeisterRequest"]
+    if last_request:
+        last_request = datetime.datetime.fromtimestamp(last_request)
     client.views_open(
         trigger_id=body["trigger_id"],
-        view=views.hausmeister()
+        view=views.hausmeister(last_request)
     )
 
 
@@ -245,6 +249,9 @@ def dm_button(ack, client, body, view):
     user_id = body["user"]["id"]
     ack()
     mailer.request(goods, comment)
+    load_data()
+    data["lastHausmeisterRequest"] = datetime.datetime.now().timestamp()
+    save_data()
     client.chat_postMessage(channel=user_id, text=f"Folgende Bestellung wurde soeben an den Hausmeister gesendet: {', '.join(goods)}")
 
 
