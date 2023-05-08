@@ -199,6 +199,15 @@ def com_funfact(body, ack, command):
         )
 
 
+@app.command("/hausmeister")
+def com_hausmeister(body, ack, client):
+    ack()
+    client.views_open(
+        trigger_id=body["trigger_id"],
+        view=views.hausmeister()
+    )
+
+
 # actions
 @app.action("einstellungsprozess_oeffnen")
 def open_modal_button(ack, body, client):
@@ -234,7 +243,6 @@ def app_home(client, event):
             user_id=event["user"],
             view=home.home()
         )
-        print("published")
     except Exception as e:
         print(f"Error publishing home tab: {e}")
 
