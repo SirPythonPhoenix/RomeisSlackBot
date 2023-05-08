@@ -13,6 +13,7 @@ from slack_sdk.errors import SlackApiError
 # file imports
 import block
 import views
+import home
 
 # constants
 PREFS = json.load(open("preferences.json", encoding="utf-8"))
@@ -223,6 +224,19 @@ def dm_button(ack, client, body, view):
             blocks=blocks
         )
     client.chat_postMessage(channel=user_id, text="Der Umfragebogen wurde erfolgreich ausgefüllt und abgeschickt!")
+
+
+# home
+@app.event("app_home_opened")
+def app_home(client, event):
+    try:
+        client.views_publish(
+            user_id=event["user"],
+            view=home.home()
+        )
+        print("published")
+    except Exception as e:
+        print(f"Error publishing home tab: {e}")
 
 
 # start app
