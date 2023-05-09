@@ -11,6 +11,10 @@ from dotenv import load_dotenv
 
 load_dotenv()
 PREFS = json.load(open("preferences.json", encoding="utf-8"))
+with open("mails/hausmeister-mail.txt", encoding="utf-8") as f:
+    MAIL_TXT = f.read()
+with open("mails/hausmeister-mail.html", encoding="utf-8") as f:
+    MAIL_HTML = f.read()
 
 port = PREFS["smtpMail"]["port"]
 smtp_server = PREFS["smtpMail"]["smtpServer"]
@@ -26,40 +30,11 @@ def request(goods, comment):
     message["To"] = receiver_email
 
     message.attach(
-        MIMEText(f"""\
-Sehr geehrter Hausmeister,
-
-könnten sie zur RomeisIE im Triangulum bitte {", ".join(goods)} bringen?
-
-{comment}
-
-Vielen Dank im Voraus für Ihre Unterstützung.
-
-Mit freundlichen Grüßen,
-RomeisIE Information Engineering
-
----------
-
-Dies ist eine automatisch generierte Mail.
-        """, "plain")
+        MIMEText(MAIL_TXT.format(", ".join(goods), comment), "plain")
     )
 
     message.attach(
-        MIMEText(f"""\
-<html>
-  <body>
-    <p>Sehr geehrter Hausmeister,<br><br>
-       könnten sie zur RomeisIE im Triangulum bitte {", ".join(goods)} bringen?<br><br>
-       {comment}<br><br>
-       Vielen Dank im Voraus für Ihre Unterstützung.<br><br>
-       Mit freundlichen Grüßen,<br>
-       RomeisIE Information Engineering<br><br>
-       <hr><br><br>
-       <i>Dies ist eine automatisch generierte Mail.</i>
-    </p>
-  </body>
-</html>
-        """, "html")
+        MIMEText(MAIL_HTML.format(", ".join(goods), comment), "html")
     )
 
     context = ssl.create_default_context()
