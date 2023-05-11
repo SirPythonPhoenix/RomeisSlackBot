@@ -1,6 +1,6 @@
 {
   "devMode": true,
-  "restoreDataBackup": true,
+  "restoreDataBackup": false,
   "hausmeisterMail": "bereyi1747@in2reach.com",
   "smtpMail": {
     "port": 465,

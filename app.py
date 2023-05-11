@@ -114,6 +114,8 @@ def com_hilfe(ack):
         "Entfernt einen Funfact.\n\n"
         "`/hausmeister`\n"
         "Öffnet das Hausmeister-Menü\n\n"
+        "`/kuche-roulette`\n"
+        "Teilnahme am Kuchen-Roulette\n\n"
     )
 
 
@@ -141,6 +143,23 @@ def com_ci(ack):
         f"White `#FFFFFF` \n"
         f"Dark Grey `#707070` \n"
         f"Light Black `#191919`")
+
+
+@app.command("/kuchen-roulette")
+def com_cake_roulette(ack, body, say):
+    load_data()
+    user_id = body['user_id']
+    ack()
+    if user_id in data["kuchenRouletteTeilnehmer"]:
+        say(
+            blocks=block.roulette_participiant(data["kuchenRouletteTeilnehmer"]),
+            text="Teilnahme am Kuchen-Roulette."
+        )
+    else:
+        say(
+            blocks=block.roulette_intro(data["kuchenRouletteTeilnehmer"]),
+            text="Teilnahme am Kuchen-Roulette."
+        )
 
 
 @app.command("/funfact")
@@ -204,8 +223,49 @@ def com_hausmeister(body, ack, client):
 
 
 # actions
+@app.action("roulette_participate")
+def action_rolette_participate(ack, body, say):
+    load_data()
+    user_id = body["user"]["id"]
+    if user_id not in data['kuchenRouletteTeilnehmer']:
+        data['kuchenRouletteTeilnehmer'].append(user_id)
+        save_data()
+        ack()
+        say(
+            text=f"Du bist nun einer von {len(data['kuchenRouletteTeilnehmer'])} "
+                 f"Teilnehmern des Kuchen-Roulettes.",
+            channel=user_id
+        )
+    else:
+        ack()
+        say(
+            text=f"Du nimmst bereits am Kuchen-Roulette teil. Man kann leider nicht zwei mal teilnehmen...",
+            channel=user_id
+        )
+
+
+@app.action("roulette_leave")
+def action_rolette_participate(ack, body, say):
+    load_data()
+    user_id = body["user"]["id"]
+    if user_id in data['kuchenRouletteTeilnehmer']:
+        data['kuchenRouletteTeilnehmer'].remove(user_id)
+        save_data()
+        ack()
+        say(
+            text=f"Du bist nun kein Teilnehmer mehr beim Kuche-Roulette.",
+            channel=user_id
+        )
+    else:
+        ack()
+        say(
+            text=f"Du bist bereits kein Teilnehmer des Kuchen-Roulettes.",
+            channel=user_id
+        )
+
+
 @app.action("einstellungsprozess_oeffnen")
-def open_modal_button(ack, body, client):
+def action_open_modal_button(ack, body, client):
     ack()
     client.views_open(
         trigger_id=body["trigger_id"],
@@ -233,7 +293,10 @@ def dm_button(ack, client, body, view):
 @app.view("hausmeister_submit")
 def dm_button(ack, client, body, view):
     values = view["state"]["values"]
-    goods = [":".join(good['text']['text'].split(':')[2:])[1:] for good in values['goods']['checkboxes-action']['selected_options']]
+    goods = [
+        ":".join(good['text']['text'].split(':')[2:])[1:] for
+        good in values['goods']['checkboxes-action']['selected_options']
+    ]
     comment = values['comment']['plain_text_input-action']['value']
     comment = comment if comment else ""
     user_id = body["user"]["id"]
@@ -242,8 +305,9 @@ def dm_button(ack, client, body, view):
     load_data()
     data["lastHausmeisterRequest"] = datetime.datetime.now().timestamp()
     save_data()
-    client.chat_postMessage(channel=user_id, text=f"Folgende Bestellung wurde soeben an den Hausmeister gesendet: {', '.join(goods)}\n"
-                                                  f"Kommentar: {comment if comment else '/'}")
+    client.chat_postMessage(channel=user_id,
+                            text=f"Folgende Bestellung wurde soeben an den Hausmeister gesendet: {', '.join(goods)}\n"
+                                 f"Kommentar: {comment if comment else '/'}")
 
 
 # home

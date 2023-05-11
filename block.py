@@ -381,3 +381,62 @@ def feedback_results(user_name, values):
         },
 
     ]
+
+
+def roulette_intro(participiants):
+    return [
+        {
+            "type": "section",
+            "text": {
+                "type": "mrkdwn",
+                "text": f"Die Teilnahme am Kuchen-Rolette vergütet dich jeden Monat mit einem Kuchen... "
+                        f"der einzige Haken? - du musst ihn das ein oder andere Mal selber backen. \n"
+                        f"Drücke auf `Teilnehmen`, um teilzunehmen. \n"
+                        f"Zurzeit nehmen {len(participiants)} Personen teil."
+            }
+        },
+        {
+            "type": "actions",
+            "elements": [
+                {
+                    "type": "button",
+                    "text": {
+                        "type": "plain_text",
+                        "emoji": True,
+                        "text": "Teilnehmen"
+                    },
+                    "style": "primary",
+                    "value": "some_value",
+                    "action_id": "roulette_participate"
+                }
+            ]
+        }
+    ]
+
+
+def roulette_participiant(participiants):
+    return [
+        {
+            "type": "section",
+            "text": {
+                "type": "mrkdwn",
+                "text": f"Du bist zurzeit einer von {len(participiants)} glücklichen Teilnehmern des Kuchen-Roulettes."
+            }
+        },
+        {
+            "type": "actions",
+            "elements": [
+                {
+                    "type": "button",
+                    "text": {
+                        "type": "plain_text",
+                        "emoji": True,
+                        "text": "Nicht mehr teilnehmen"
+                    },
+                    "style": "danger",
+                    "value": "some_value",
+                    "action_id": "roulette_leave"
+                }
+            ]
+        }
+    ]

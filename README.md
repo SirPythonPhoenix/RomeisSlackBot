@@ -50,6 +50,9 @@ Entfernt einen Funfact.
 ``/hausmeister``<br>
 Öffnet das Hausmeister-Menü
 
+``/kuchen-roulette``<br>
+Teilnahme am Kuchen-Roulette.
+
 ### Begrüßung
 
 Wenn jemand dem Slack-Workspace beitritt, wird er/sie mit einer Willkommensnachricht begrüßt.
