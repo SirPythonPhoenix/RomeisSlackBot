@@ -35,6 +35,7 @@ def home():
                             "`remove-funfact [ID]`\nEntfernt einen Funfact.\n\n"
                             "`hausmeister`\nÖffnet das Hausmeister-Menü.\n\n"
                             "`/kuchen-roulette`\nTeilnahme am Kuchen-Roulette.\n\n"
+                            "`/kuchen`\nBeginnt das Roulette\n\n"
                 }
             }
         ]

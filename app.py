@@ -2,7 +2,9 @@
 import os
 import random
 import datetime
+import time
 import json
+import threading
 
 # external module imports
 from dotenv import load_dotenv
@@ -116,6 +118,8 @@ def com_hilfe(ack):
         "Öffnet das Hausmeister-Menü\n\n"
         "`/kuche-roulette`\n"
         "Teilnahme am Kuchen-Roulette\n\n"
+        "`/kuchen`\n"
+        "Beginnt das Roulette.\n\n"
     )
 
 
@@ -222,6 +226,25 @@ def com_hausmeister(body, ack, client):
     )
 
 
+@app.command("/kuchen")
+def com_kuchen(ack, say):
+    load_data()
+    if len(data["kuchenRouletteTeilnehmer"]):
+        user_id = random.choice(data["kuchenRouletteTeilnehmer"])
+        ack()
+        say(
+            text=f"<@{user_id}> wurde zum Kuchen-Bäcker ausgelost!"
+        )
+        say(
+            text=f"Du musst einen Kuchen backen (besorgen). Bitte bringe bei Gelegenheit einen Kuchen mit.",
+            channel=user_id
+        )
+    else:
+        ack(
+            text="Zurzeit nimmt leider niemand am Kuchen-Roulette teil."
+        )
+
+
 # actions
 @app.action("roulette_participate")
 def action_rolette_participate(ack, body, say):
@@ -320,6 +343,29 @@ def app_home(client, event):
         )
     except Exception as e:
         print(f"Error publishing home tab: {e}")
+
+
+# threads
+
+
+def morgens_meeting():
+    while True:
+        current_time = datetime.datetime.now()
+        load_data()
+        if current_time.weekday() < 5 and \
+           current_time.hour == 8 and \
+           current_time.minute in range(35, 43) and \
+           current_time.weekday() != data["lastMorningRemider"]:
+            data["lastMorningRemider"] = current_time.weekday()
+            save_data()
+            app.client.chat_postMessage(
+                text="Das morgentliche Meeting im Huddle beginnt in wenigen Minuten.",
+                channel=PREFS["morningMeetingChannelID"]
+            )
+        time.sleep(5)
+
+
+threading.Thread(target=morgens_meeting).start()
 
 
 # start app

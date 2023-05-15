@@ -53,6 +53,9 @@ Entfernt einen Funfact.
 ``/kuchen-roulette``<br>
 Teilnahme am Kuchen-Roulette.
 
+``/kuchen``<br>
+Beginnt das Roulette.
+
 ### Begrüßung
 
 Wenn jemand dem Slack-Workspace beitritt, wird er/sie mit einer Willkommensnachricht begrüßt.
