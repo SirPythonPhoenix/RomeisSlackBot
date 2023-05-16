@@ -36,6 +36,9 @@ def home():
                             "`hausmeister`\nÖffnet das Hausmeister-Menü.\n\n"
                             "`/kuchen-roulette`\nTeilnahme am Kuchen-Roulette.\n\n"
                             "`/kuchen`\nBeginnt das Roulette\n\n"
+                            "`/bingo-card`\nGeneriert eine zufällige Bingo-Karte.\n\n"
+                            "`/add-bingo-phrase`\nFügt eine Bingo-Phrase hinzu.\n\n"
+                            "`/remove-bingo-phrase`\nEntfernt eine Bingo-Phrase.\n\n"
                 }
             }
         ]

@@ -121,6 +121,12 @@ def com_hilfe(ack):
         "Teilnahme am Kuchen-Roulette\n\n"
         "`/kuchen`\n"
         "Beginnt das Roulette.\n\n"
+        "`/bingo-card`\n"
+        "Generiert eine zufällige Bingo-Karte.\n\n"
+        "`/add-bingo-phrase`\n"
+        "Fügt eine Bingo-Phrase hinzu.\n\n"
+        "`/remove-bingo-phrase`\n"
+        "Entfernt eine Bingo-Phrase.\n\n"
     )
 
 

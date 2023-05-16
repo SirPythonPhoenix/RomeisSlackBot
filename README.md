@@ -56,6 +56,15 @@ Teilnahme am Kuchen-Roulette.
 ``/kuchen``<br>
 Beginnt das Roulette.
 
+``/bingo-card``<br>
+Generiert eine zufällige Bingo-Karte.
+
+``/add-bingo-phrase``<br>
+Fügt eine Bingo-Phrase hinzu.
+
+``/remove-bingo-phrase``<br>
+Entfernt eine Bingo-Phrase.
+
 ### Begrüßung
 
 Wenn jemand dem Slack-Workspace beitritt, wird er/sie mit einer Willkommensnachricht begrüßt.
