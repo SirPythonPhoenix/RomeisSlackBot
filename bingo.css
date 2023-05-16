@@ -1,0 +1,26 @@
+body {
+    background-color: white;
+    text-align: center;
+}
+
+div {
+    font-family: Arial, sans-serif;
+    display: inline-block;
+}
+
+table, td {
+    text-align: center;
+    border-style: solid;
+    border-color: gray;
+    border-width: 3px;
+    border-collapse: collapse;
+    color: #6b6b6b;
+    font-weight: bold;
+}
+
+td {
+    height: 130px;
+    width: 130px;
+}
+
+

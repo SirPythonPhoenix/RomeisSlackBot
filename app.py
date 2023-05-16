@@ -17,6 +17,7 @@ import block
 import views
 import home
 import mailer
+import bingo_generator
 
 # constants
 PREFS = json.load(open("preferences.json", encoding="utf-8"))
@@ -223,6 +224,51 @@ def com_hausmeister(body, ack, client):
     client.views_open(
         trigger_id=body["trigger_id"],
         view=views.hausmeister(last_request)
+    )
+
+
+@app.command("/bingo-card")
+def com_bingo_card(body, ack, say, client):
+    ack()
+    bingo_generator.generate_bingo(data["bingoPhrases"])
+    say(
+        text=f"Hier ist deine Bingo Card <@{body['user_id']}>"
+    )
+    client.files_upload_v2(
+        file="bingo_card.png",
+        channel=body["channel_id"]
+    )
+
+
+@app.command("/add-bingo-phrase")
+def com_funfact(say, body, ack, command):
+    bingo_phrase = command["text"]
+    if bingo_phrase == "":
+        ack("Bitte gib ein Argument ein.")
+        return
+    load_data()
+    data["bingoPhrases"].append(bingo_phrase)
+    save_data()
+    user_id = body["user_id"]
+    ack()
+    say(
+        text=f"<@{user_id}> *Folgende Bingo-Phrase wurde erfolgreich hinzugefügt:*\n{bingo_phrase}"
+    )
+
+
+@app.command("/remove-bingo-phrase")
+def com_funfact(say, body, ack, command):
+    bingo_phrase = command["text"]
+    if bingo_phrase == "":
+        ack("Bitte gib ein Argument ein.")
+        return
+    load_data()
+    data["bingoPhrases"].remove(bingo_phrase)
+    save_data()
+    user_id = body["user_id"]
+    ack()
+    say(
+        text=f"<@{user_id}> *Folgende Bingo-Phrase wurde erfolgreich entfernt:*\n{bingo_phrase}"
     )
 
 
