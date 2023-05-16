@@ -74,3 +74,41 @@ Wenn jemand dem Slack-Workspace beitritt, wird er/sie mit einer Willkommensnachr
 Sieben Tage nach dem Beitritt in den Workspace wird ein Mitglied gebeten, eine Umfrage zur RomeisIE auszufüllen.<br>
 Zwei Tage nach letzterer Aufforderung wird das Mitglied nochmals daran erinnert, die Umfrage auszufüllen.
 
+### Preferences
+
+Grundlegende Einstellungsmöglichkeiten sind in der [preferences.json](preferences.json) erfasst.
+
+``devMode: bool``<br>
+Senkt die Zeit bis zur Begrüßungsnachricht neuer Mitglieder, falls true.
+
+``restoreDataBackup: bool``<br>
+Überschreibt [data.json](data.json) mit [data-backup.json](data-backup.json), falls true.
+
+``hausmeisterMail: string``<br>
+Die Mail-Adresse des Hausmeisters.
+
+``smtpMail.port: int``<br>
+Port für den Mailversand.
+
+``smtpMail.smtpServer: string``<br>
+SMTP-Mail Server. <br>
+Info: Die Sender-Mail-Adresse und das Passwort sind als Environment-Variables gespeichert.
+
+``welcomeChannelID: bool``<br>
+ChannelID des Channels, in dem neue Server-Mitglieder begrüßt werden.
+
+``sendFeedbackSheetToChannels: array<String>``<br>
+ChannelID's (das können auch DM-Channel sein) oder UserID's and die das Resultat des Feedback-Bogens gesendet wird.
+
+``daysTillFeedback: int``<br>
+Tage, bis ein neuer Member darum gebeten wird, das Feedback-Formular auszufüllen.
+
+``daysTillFeedbackReminder: int``<br>
+Tage, bis ein neuer Member erinnert wird, das Feedback-Formulr auszufüllen.
+
+``feedbackMessageClockHour: int``<br>
+Stunde zu der der Member die Feedback-Nachricht erhällt.
+
+``morningMeetingChannelID: string``<br>
+ChannelID des Channels in den ein Reminder zum morgentlichen Meetings gesendet wird.
+
