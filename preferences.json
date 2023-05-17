@@ -6,10 +6,10 @@
     "port": 465,
     "smtpServer": "mail.gmx.com"
   },
-  "welcomeChannelId": "C056K5MTRG9",
-  "sendFeedbackSheetToChannels": ["D056055NXPY"],
+  "welcomeChannelId": "C0CQW8F98",
+  "sendFeedbackSheetToChannels": [],
   "daysTillFeedback": 7,
   "daysTillFeedbackReminder": 9,
   "feedbackMessageClockHour": 11,
-  "morningMeetingChannelID": "C056K5MTRG9"
+  "morningMeetingChannelID": "C0MT3GVJQ"
 }
