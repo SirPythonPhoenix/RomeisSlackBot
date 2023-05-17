@@ -4,129 +4,131 @@
 
 ## Overview
 
-Ziel dieser Slack-App ist, den OnBoarding Prozess von neuen Mitarbeitenden zu verbessern und eine zentrale Anlaufstelle für Fragen und Informationen zu sein.
+The purpose of this Slack app is to enhance the onboarding process for new employees and serve as a central hub for questions and information.
 
-Die Applikation umfasst daher einige hilfreiche Slack-Commands, aber auch eine Info-Seite im Profil der Anwendung in Slack mit einem Bereich für häufig gestellte Fragen.
+The application includes several helpful Slack commands and also provides an info page in the application's profile in Slack, listing all the commands.
 
 ## Setup
 
-Benötigte externe Python-Module sind in der [requirements.txt](requirements.txt) aufgeführt und können durch pip mit folgendem Befehl installiert werden:<br>
-````
+The required external Python modules are listed in [requirements.txt](requirements.txt) and can be installed using pip with the following command:<br>
+
+```
 pip install -r requirements.txt
-````
+```
 
-Des Weiteren ist es nötig, die OAuth Umgebungsvariablen ``SLACK_BOT_TOKEN`` und ``SLACK_APP_TOKEN`` zu setzen. Legen sie dafür im root dieses Projektes eine ``.env`` an setzen sie darin die entsprechenden Variablen.
 
-Zum Starten der Applikation muss nun die [app.py](app.py) ausgeführt werden. 
+Furthermore, it is necessary to set the OAuth environment variables `SLACK_BOT_TOKEN` and `SLACK_APP_TOKEN`. To do this, create a `.env` file at the root of this project and set the respective variables there.
+
+To start the application, execute [app.py](app.py).
 
 ## Docs
 
 ### Commands
 
 ``/internship-form``<br>
-Gibt den Link zum Erfassungsformular für Praktikanten an.
+Provides the link to the internship application form.
 
 ``/wlan``<br>
-Gibt das W-Lan Passwort in Gelnhausen an.
+Provides the Wi-Fi password for Gelnhausen.
 
 ``/wlan-koeln``<br>
-Gibt das W-Lan Passwort in Köln an.
+Provides the Wi-Fi password for Cologne.
 
 ``/ci``<br>
-Listet verschiedene Farb-Hex-Codes auf.
+Lists various color hex codes.
 
 ``/coffee``<br>
-Leistet Hilfestellung zur Beschaffung eines Kaffes.
+Provides assistance in getting a coffee.
 
 ``/funfact``<br>
-Gibt einen zufälligen Funfact aus.
+Displays a random fun fact.
 
 ``/add-funfact [FUNFACT]``<br>
-Fügt einen neuen Funfact hinzu.
+Adds a new fun fact.
 
 ``/remove-funfact [ID]``<br>
-Entfernt einen Funfact.
+Removes a fun fact.
 
 ``/hausmeister``<br>
-Öffnet das Hausmeister-Menü
+Opens the janitor menu.
 
 ``/kuchen-roulette``<br>
-Teilnahme am Kuchen-Roulette.
+Participates in the cake roulette.
 
 ``/kuchen``<br>
-Beginnt das Roulette.
+Starts the roulette.
 
 ``/bingo-card``<br>
-Generiert eine zufällige Bingo-Karte.
+Generates a random bingo card.
 
 ``/add-bingo-phrase``<br>
-Fügt eine Bingo-Phrase hinzu.
+Adds a bingo phrase.
 
 ``/remove-bingo-phrase``<br>
-Entfernt eine Bingo-Phrase.
+Removes a bingo phrase.
 
-### Begrüßung
+### Greeting
 
-Wenn jemand dem Slack-Workspace beitritt, wird er/sie mit einer Willkommensnachricht begrüßt.
+When someone joins the Slack workspace, they are greeted with a welcome message.
 
-### Umfrage
+### Survey
 
-Sieben Tage nach dem Beitritt in den Workspace wird ein Mitglied gebeten, eine Umfrage zur RomeisIE auszufüllen.<br>
-Zwei Tage nach letzterer Aufforderung wird das Mitglied nochmals daran erinnert, die Umfrage auszufüllen.
+Seven days after joining the workspace, a member is asked to fill out a survey about RomeisIE.<br>
+Two days after the initial request, the member is reminded again to complete the survey.
 
 ### Preferences
 
-Grundlegende Einstellungsmöglichkeiten sind in der [preferences.json](preferences.json) erfasst.
+Basic configuration options are recorded in [preferences.json](preferences.json).
 
 ``devMode: bool``<br>
-Senkt die Zeit bis zur Begrüßungsnachricht neuer Mitglieder, falls true.
+Reduces the time until the welcome message for new members if set to true.
 
 ``restoreDataBackup: bool``<br>
-Überschreibt [data.json](data.json) mit [data-backup.json](data-backup.json), falls true.
+Overwrites [data.json](data.json) with [data-backup.json](data-backup.json) if set to true.
 
 ``hausmeisterMail: string``<br>
-Die Mail-Adresse des Hausmeisters.
+The email address of the janitor.
 
 ``smtpMail.port: int``<br>
-Port für den Mailversand.
+Port for mail delivery.
 
 ``smtpMail.smtpServer: string``<br>
-SMTP-Mail Server. <br>
-Info: Die Sender-Mail-Adresse und das Passwort sind als Environment-Variables gespeichert.
+SMTP mail server. <br>
+Note: The sender email address and password are stored as environment variables.
 
 ``welcomeChannelID: bool``<br>
-ChannelID des Channels, in dem neue Server-Mitglieder begrüßt werden.
+Channel ID of the channel where new server members are greeted.
 
 ``sendFeedbackSheetToChannels: array<String>``<br>
-ChannelID's (das können auch DM-Channel sein) oder UserID's and die das Resultat des Feedback-Bogens gesendet wird.
+Channel IDs (which can also be DM channels) or user IDs to which the feedback form result is sent.
 
 ``daysTillFeedback: int``<br>
-Tage, bis ein neuer Member darum gebeten wird, das Feedback-Formular auszufüllen.
+Days until a new member is asked to fill out the feedback form.
 
 ``daysTillFeedbackReminder: int``<br>
-Tage, bis ein neuer Member erinnert wird, das Feedback-Formulr auszufüllen.
+Days until a new member is reminded to fill out the feedback form.
 
 ``feedbackMessageClockHour: int``<br>
-Stunde zu der der Member die Feedback-Nachricht erhällt.
+Hour at which the member receives the feedback message.
 
 ``morningMeetingChannelID: string``<br>
-ChannelID des Channels in den ein Reminder zum morgentlichen Meetings gesendet wird.
+Channel ID of the channel where a reminder for the morning meetings is sent.
 
-### Systemumgebungsvariablen
+### System Environment Variables
 
-Es wird empfohlen, die Umgebungsvariablen in einer ``.env``-Datei abzuspeichern.
-Folgende Umgebungsvariablen müssen vor der Nutzung dieses Bots gesetzt werden:
+It is recommended to store the environment variables in a `.env` file.
+The following environment variables must be set before using this bot:
 
 ``SLACK_BOT_TOKEN``<br>
-Das Bot-Token des Slack-Bots
+The Slack bot's bot token.
 
 ``SLACK_APP_TOKEN``<br>
-Das Application-Token des Slack-Bots
+The Slack bot's application token.
 
 ``PYTHON_MAIL_USER``<br>
-z.B. my-mail-address@gmail.com<br>
-WICHTIG: Ein SMTP-Zugang muss vorher eingerichtet werden. 
-Der SMTP-Server wird in der [preferences.json](preferences.json) hinterlegt.
+e.g., my-mail-address@gmail.com<br>
+IMPORTANT: An SMTP access must be set up beforehand. 
+The SMTP server is specified in [preferences.json](preferences.json).
 
 ``PYTHON_MAIL_PASSWORD``<br>
-Passwort der Mail-Addresse
+Password of the mail address.
