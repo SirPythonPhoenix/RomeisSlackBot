@@ -112,3 +112,21 @@ Stunde zu der der Member die Feedback-Nachricht erhällt.
 ``morningMeetingChannelID: string``<br>
 ChannelID des Channels in den ein Reminder zum morgentlichen Meetings gesendet wird.
 
+### Systemumgebungsvariablen
+
+Es wird empfohlen, die Umgebungsvariablen in einer ``.env``-Datei abzuspeichern.
+Folgende Umgebungsvariablen müssen vor der Nutzung dieses Bots gesetzt werden:
+
+``SLACK_BOT_TOKEN``<br>
+Das Bot-Token des Slack-Bots
+
+``SLACK_APP_TOKEN``<br>
+Das Application-Token des Slack-Bots
+
+``PYTHON_MAIL_USER``<br>
+z.B. my-mail-address@gmail.com<br>
+WICHTIG: Ein SMTP-Zugang muss vorher eingerichtet werden. 
+Der SMTP-Server wird in der [preferences.json](preferences.json) hinterlegt.
+
+``PYTHON_MAIL_PASSWORD``<br>
+Passwort der Mail-Addresse
